@@ -1,0 +1,3 @@
+GET  http://localhost:3001/api/user/auth
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNDg2NGU2Mzk0ODJkMDk5OWI0MzRmNiIsImVtYWlsIjoicHJ1ZWJhQGdtYWlsLmNvbSIsImlhdCI6MTY2NTcwMzEyMiwiZXhwIjoxNjY1NzA2NzIyfQ.cUwO4NvQhDS6-QU4qhA3rB2K0J9rJ89h6XBRCNNkaFY
