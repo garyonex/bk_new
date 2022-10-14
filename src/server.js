@@ -7,14 +7,14 @@ import userRoute from './routes/user.routes.js'
 import cookieParser from 'cookie-parser'
 import loginRoute from './routes/login.routes.js'
 import logger from './middleware/loggers.js'
-import errorsFound from './middleware/errorsFound.js'
 import authRoutes from './routes/auth.routes.js'
 import categoryRoutes from './routes/category.routes.js'
+import handleErrors from './middleware/handleErrors.js'
+import gamesplayRoutes from './routes/gamesplay.routes.js'
 config() // viene del .env para poder leer los archivos
 
 const app = express()
 const loggers = logger
-const errorsRoutes = errorsFound
 app.use(loggers)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -35,9 +35,10 @@ app.use('/api/user/register', userRoute)
 app.use('/api/user/login', loginRoute)
 app.use('/api/user/auth', authRoutes)
 app.use('/api/product/category', categoryRoutes)
+app.use('/api/product/gameplay', gamesplayRoutes)
 
 app.use('/hola', (req, res) => {
   res.json('hola')
 })
 // ** MANEJO DE ERRORES */
-app.use(errorsRoutes)
+app.use(handleErrors)
