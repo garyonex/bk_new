@@ -1,8 +1,0 @@
-POST http://localhost:3001/api/product/category
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNDg2NGU2Mzk0ODJkMDk5OWI0MzRmNiIsImVtYWlsIjoicHJ1ZWJhQGdtYWlsLmNvbSIsImlhdCI6MTY2NTcwMjY1MSwiZXhwIjoxNjY1NzA2MjUxfQ.fYftkGqPis6FKHVzJHlTDKXZKBlwtug8z73DGj_yR-Q
-
-
-{     
-    "name" : "Rompecabezas"
-}

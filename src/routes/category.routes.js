@@ -1,9 +1,7 @@
 import { Router } from 'express'
-import { categoryGames } from '../controllers/categoryGames.js'
-import authToken from '../middleware/authToken.js'
+import { allCategory, createCategory } from '../controllers/category.js'
 
 const categoryRoutes = Router()
-
-categoryRoutes.post('/', authToken, categoryGames)
-
+categoryRoutes.post('/', createCategory)
+categoryRoutes.get('/', allCategory)
 export default categoryRoutes

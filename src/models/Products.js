@@ -1,6 +1,6 @@
-import mongoose, { Schema } from 'mongoose'
+import { model, Schema } from 'mongoose'
 
-const GamesSchema = mongoose.Schema(
+const Products = Schema(
   {
     name: {
       required: true,
@@ -19,7 +19,7 @@ const GamesSchema = mongoose.Schema(
       maxlength: 100000
     },
     category: {
-      type: Schema.type.ObjectId,
+      type: Schema.ObjectId,
       ref: 'Category',
       required: true
     },
@@ -31,9 +31,9 @@ const GamesSchema = mongoose.Schema(
       required: true,
       type: Boolean
     },
-    gameplay: {
+    subcategory: {
       type: Schema.Types.ObjectId,
-      ref: 'Gameplay',
+      ref: 'subCategory',
       required: true
     },
     sold: {
@@ -53,4 +53,4 @@ const GamesSchema = mongoose.Schema(
   { timestamps: true }
 )
 
-export default mongoose.model('Game', GamesSchema)
+export default model('Product', Products)
