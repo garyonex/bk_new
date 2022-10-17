@@ -33,3 +33,29 @@ export const allSubCategory = async (req, res, next) => {
   const subCategory = await SubCategory.find({})
   res.json(subCategory)
 }
+
+export const removeSubById = async (req, res, next) => {
+  const { id } = req.params
+  await SubCategory.findByIdAndRemove(id)
+  try {
+    res.status(204).end()
+  } catch (error) {
+    next(error)
+  }
+}
+
+export const changeSubById = async (req, res, next) => {
+  const { id } = req.params
+  const modify = req.body
+  const newSubCategoryUpdate = {
+    subcategory: modify.subcategory
+  }
+  try {
+    const result = await SubCategory.findByIdAndUpdate(id, newSubCategoryUpdate, {
+      new: true
+    })
+    res.status(200).json(result)
+  } catch (error) {
+    next(error)
+  }
+}
