@@ -1,5 +1,4 @@
 import User from '../models/User.js'
-
 const authUserAdmin = async (req, res, next) => {
   const { userId } = req
   const id = userId

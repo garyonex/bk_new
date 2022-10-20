@@ -16,13 +16,3 @@ export const authToken = (req, res, next) => {
     res.status(401).json({ error: 'token invalid' })
   }
 }
-
-export const authTokenAndAuthorization = (req, res, next) => {
-  authToken(req, res, () => {
-    if (req.user.id === req.params.id || req.user.isAdmin) {
-      next()
-    } else {
-      res.status(403).json(' Your are not alowed to do that')
-    }
-  })
-}
