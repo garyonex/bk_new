@@ -1,0 +1,12 @@
+POST  http://localhost:3001/api/products
+Content-Type: application/json
+
+{
+  "name": "Xbox 360",
+  "description": "consola nueva Xbox",
+  "price": "500",
+  "categories": ["Gaming", "Xbox"],
+  "shipping": true,
+  "available": true,
+  "images": "test"
+}

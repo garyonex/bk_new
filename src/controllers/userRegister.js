@@ -22,10 +22,28 @@ export const userRegister = async (req, res) => {
   }
 }
 
-export const checkUser = async (req, res) => {
-  const users = await User.find({})
+export const checkUser = async (req, res, next) => {
+  const { userId } = req
+  const id = userId
+  try {
+    const user = await User.findById(id)
+    const { password, ...others } = user._doc
+    res.status(200).json(others)
+  } catch (error) {
+    next(error)
+  }
+}
 
-  res.status(200).json(users)
+export const allUsers = async (req, res, next) => {
+  const query = req.query.nwe
+  try {
+    const users = query
+      ? await User.find().sort({ id: -1 }).limit(1)
+      : await User.find()
+    res.status(200).json(users)
+  } catch (error) {
+    next(error)
+  }
 }
 
 export const removeUserById = async (req, res, next) => {
@@ -45,8 +63,13 @@ export const changeUserById = async (req, res, next) => {
     email: user.email,
     name: user.name
   }
-  const result = await User.findByIdAndUpdate(id, changeUser, {
-    new: true
-  })
-  res.status(200).json(result)
+
+  try {
+    const result = await User.findByIdAndUpdate(id, changeUser, {
+      new: true
+    })
+    res.status(200).json(result)
+  } catch (error) {
+    res.status(500).json(error)
+  }
 }

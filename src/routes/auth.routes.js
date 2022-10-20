@@ -1,7 +1,7 @@
 import { Router } from 'express'
-import authUser from '../controllers/authUser.js'
-import authToken from '../middleware/authToken.js'
+import authUserAdmin from '../middleware/authUserAdmin.js'
+import { authToken } from '../middleware/authToken.js'
 
 const authRoutes = Router()
-authRoutes.get('/', authToken, authUser)
+authRoutes.get('/', authToken, authUserAdmin)
 export default authRoutes

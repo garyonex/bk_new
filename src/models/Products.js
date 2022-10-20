@@ -5,7 +5,7 @@ const Products = Schema(
     name: {
       required: true,
       type: String,
-      unique: 1,
+      unique: true,
       maxlength: 100
     },
     description: {
@@ -18,9 +18,8 @@ const Products = Schema(
       type: Number,
       maxlength: 100000
     },
-    category: {
-      type: Schema.ObjectId,
-      ref: 'Category',
+    categories: {
+      type: Array,
       required: true
     },
     shipping: {
@@ -31,22 +30,8 @@ const Products = Schema(
       required: true,
       type: Boolean
     },
-    subcategory: {
-      type: Schema.Types.ObjectId,
-      ref: 'subCategory',
-      required: true
-    },
-    sold: {
-      type: Number,
-      maxlength: 100,
-      default: 0
-    },
-    publish: {
-      required: true,
-      type: Boolean
-    },
     images: {
-      type: Array,
+      type: String,
       default: []
     }
   },

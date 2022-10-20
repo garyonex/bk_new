@@ -1,6 +1,7 @@
 import User from '../models/User.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+
 export const recoverUserPass = async (req, res) => {
   const { body } = req
   const { email, password } = body
@@ -15,15 +16,15 @@ export const recoverUserPass = async (req, res) => {
 
   const userForToken = {
     id: user._id,
-    email: user.email
+    email: user.email,
+    isAdmin: user.isAdmin
   }
   const token = jwt.sign(userForToken, process.env.JWT_SECRET, {
     expiresIn: 60 * 60
   })
+  const { ...others } = user._doc
   res.send({
-    email: user.email,
-    name: user.name,
-    lastname: user.lastname,
+    ...others,
     token
   })
 }

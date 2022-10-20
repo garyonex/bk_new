@@ -3,13 +3,17 @@ import {
   createProducts,
   removeById,
   searchById,
-  searchProduts
+  searchProduts,
+  updatedProduct
 } from '../controllers/produts.js'
+import { authToken } from '../middleware/authToken.js'
+import authUserAdmin from '../middleware/authUserAdmin.js'
 
 const productRoutes = Router()
-productRoutes.post('/', createProducts)
+productRoutes.post('/', authToken, authUserAdmin, createProducts)
 productRoutes.get('/:id', searchById)
 productRoutes.get('/', searchProduts)
-productRoutes.put('/id', removeById)
-// ? falta por agregar modificar mediante id
+productRoutes.put('/:id', authToken, authUserAdmin, updatedProduct)
+productRoutes.delete('/id', authToken, authUserAdmin, removeById)
+
 export default productRoutes

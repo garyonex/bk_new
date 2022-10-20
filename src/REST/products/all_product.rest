@@ -1,0 +1,11 @@
+### por disponibilidad
+GET  http://localhost:3001/api/products?available=true
+Content-Type: application/json
+
+### por categorias
+GET  http://localhost:3001/api/products?categories=Xbox
+Content-Type: application/json
+
+### ultimo creado
+GET  http://localhost:3001/api/products?latest=true
+Content-Type: application/json

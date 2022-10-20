@@ -8,10 +8,8 @@ import cookieParser from 'cookie-parser'
 import loginRoute from './routes/login.routes.js'
 import logger from './middleware/loggers.js'
 import authRoutes from './routes/auth.routes.js'
-import categoryRoutes from './routes/category.routes.js'
 import handleErrors from './middleware/handleErrors.js'
 import productRoutes from './routes/products.routes.js'
-import subCategoryRoutes from './routes/subCategory.routes.js'
 config() // viene del .env para poder leer los archivos
 
 const app = express()
@@ -35,8 +33,6 @@ server.on('error', (err) => console.log(err))
 app.use('/api/user/register', userRoute)
 app.use('/api/user/login', loginRoute)
 app.use('/api/user/auth', authRoutes)
-app.use('/api/product/category', categoryRoutes)
-app.use('/api/product/subcategory', subCategoryRoutes)
 app.use('/api/products', productRoutes)
 
 app.use('/hola', (req, res) => {

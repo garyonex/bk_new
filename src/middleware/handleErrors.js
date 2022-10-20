@@ -8,6 +8,8 @@ const handleErrors = (error, req, res, next) => {
     res.status(401).json({ error: 'token missing or invalid' })
   } else if (error.name === 'TokenExpirerError') {
     res.status(401).json({ error: 'token expired' })
+  } else if (error.name === 'TypeError') {
+    res.status(500).send({ error: 'error type' })
   } else {
     res.status(500).end()
   }
